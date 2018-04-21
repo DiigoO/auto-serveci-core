@@ -19,13 +19,17 @@ public class AutoserviceLoginService {
 
     public Boolean login (UserLoginAggregate userLoginAggregate) {
         if(userLoginAggregate == null){
+            System.out.printf(userLoginAggregate.getEmail() + userLoginAggregate.getPassword());
+            System.out.println("ENTROU NO PRIMEIRO IF: FALSE");
             return false;
         }
 
         final UserLogin sameUserExist = loginRepository.findByEmailAndPasswordEquals(userLoginAggregate.getEmail(), userLoginAggregate.getPassword());
         if(sameUserExist != null){
+            System.out.println("ENTROU NO SEGUNDO IF: TRUE");
             return true;
         }
+        System.out.println(sameUserExist);
         return false;
     }
 
