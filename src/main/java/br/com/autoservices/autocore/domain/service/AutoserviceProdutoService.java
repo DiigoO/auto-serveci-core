@@ -6,6 +6,8 @@ import br.com.autoservices.autocore.domain.repository.NewProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class AutoserviceProdutoService {
     @Autowired
@@ -16,8 +18,8 @@ public class AutoserviceProdutoService {
             return false;
         }
 
-        NewProduct verifyUserExist = newProductRepository.findByNomeProduto(newProductAggregate.getNomeProduto());
-        if(verifyUserExist == null){
+        NewProduct verifyProductExist = newProductRepository.findByNomeProduto(newProductAggregate.getNomeProduto());
+        if(verifyProductExist == null){
             NewProduct saveProduct = new NewProduct();
             saveProduct.setNomeProduto(newProductAggregate.getNomeProduto());
             saveProduct.setValor(newProductAggregate.getValor());
@@ -26,5 +28,9 @@ public class AutoserviceProdutoService {
         }
         return false;
 
+    }
+
+    public List<NewProduct> listProducts(){
+        return newProductRepository.findAll();
     }
 }

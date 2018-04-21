@@ -3,7 +3,7 @@ package br.com.autoservices.autocore.domain.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "products")
 public class NewProduct {
     @Id
     private String id;
